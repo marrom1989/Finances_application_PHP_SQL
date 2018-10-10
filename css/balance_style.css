@@ -1,0 +1,125 @@
+body {
+	
+	font-family: 'Roboto', sans-serif;	
+	color: #FBFBFB;
+	background-color: #330000;
+	overflow-x: hidden;
+}
+#header{
+	
+	padding: 20px 0;
+	background-color: #220000;
+}
+#logo{
+	
+	font-size: 50px;
+	text-align: center;
+	letter-spacing: 5px;
+}
+#clock{
+	font-size: 50px;
+	text-align: center;
+}
+
+@media screen and (max-width: 1140px){
+	#clock, #logo{
+		
+		font-size: 20px;
+	}
+}
+#navSpec{
+	
+	border-bottom: 2px solid #CC0000;
+}
+#income, #expense, #balance, #settings{
+	
+	border-right: 1px dotted #CC0000;
+}
+#income{
+	
+	border-left: 1px dotted #CC0000;
+}
+@media screen and (max-width: 1140px){
+	#income, #expense, #balance, #settings{
+		
+		border-right: none;
+		border-left: none;
+	}
+}
+.dropdown-item:hover{
+	
+	background-color: #FFCCCC;
+	border: 1px solid #DD0000;
+	transition: all .3s ease-in-out;
+}
+#currentMonth, #previousMonth, #currentYear, #custom{
+	
+	padding: 5px;
+}
+@media screen and (max-width: 1140px){
+	#dropdownButton, #currentMonth, #previousMonth, #currentYear, #custom{
+		
+		font-size: 11px;
+	}
+}
+#incomeTable{
+	
+	margin-top: 125px;
+	font-size: 35px;
+}
+#expenseTable{
+	
+	margin-top: 50px;
+	font-size: 35px;
+}
+@media screen and (max-width: 1140px){
+	#incomeTable, #expenseTable{
+		
+		font-size: 25px;
+	}
+}
+table{
+	
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+th, td, tr{
+	
+	border: 1px solid #FFFFFF;
+	rules: groups;
+	padding: 3px;
+	
+}
+#piechart{
+	
+	min-width: 310px; 
+	height: 400px; 
+	max-width: 600px; 
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+#footer{
+	
+	font-size: 20px;
+	padding: 5px;
+	text-align: center;
+	background-color: #220000;
+	border-top: 1px solid #FFFFFF;	
+}
+@media screen and (max-width: 1140px){
+	#footer{
+		
+		bottom: 0px;
+		position: fixed;
+	}
+}
+a#logoLink{
+	text-decoration: none;
+	color: white;
+}
+
+
+
+

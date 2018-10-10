@@ -1,0 +1,78 @@
+body {
+	
+	font-family: 'Roboto', sans-serif;	
+	color: #FBFBFB;
+	background-color: #330000;
+	overflow-x: hidden;
+}
+#header{
+	
+	padding: 20px 0;
+	background-color: #220000;
+}
+#logo{
+	
+	font-size: 50px;
+	text-align: center;
+	letter-spacing: 5px;
+}
+#clock{
+	font-size: 50px;
+	text-align: center;
+}
+
+@media screen and (max-width: 1140px){
+	#clock, #logo{
+		
+		font-size: 20px;
+	}
+}
+.container{
+	
+	margin-top: 100px;
+}
+#button1{
+
+	font-size: 40px;
+	letter-spacing: 2px;
+	outline: none;
+	padding: 25px;
+	border: 1px solid #000000;
+}
+#button2{
+	
+	width: 290px;
+	margin-top: 25px;
+	font-size: 40px;
+	letter-spacing: 2px;
+	outline: none;
+	padding: 25px;
+	border: 1px solid #000000;
+}
+@media screen and (max-width: 756px){
+	#button1, #button2{
+		
+		font-size: 20px;
+		width: 170px;
+	}
+}
+#footer{
+	
+	font-size: 20px;
+	padding: 5px;
+	text-align: center;
+	background-color: #220000;
+	bottom: 0px;
+	position: fixed;
+	border-top: 1px solid #FFFFFF;	
+}
+a.link{
+	
+	color: #F9F9F9;	
+	text-decoration: none;
+}
+a#logoLink{
+	text-decoration: none;
+	color: white;
+}
+
