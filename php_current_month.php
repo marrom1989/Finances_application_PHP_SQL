@@ -48,6 +48,7 @@
 					$repaymen = "repaymen";
 					$donation = "donation";
 					
+					
 					$_SESSION['food']	= expenses($connect, $id, $food, $month, $year);
 					$_SESSION['house']	= expenses($connect, $id, $house, $month, $year);
 					$_SESSION['transport']	= expenses($connect, $id, $transport, $month, $year);
@@ -65,27 +66,29 @@
 					$_SESSION['repaymen']	= expenses($connect, $id, $repaymen, $month, $year);
 					$_SESSION['donation']	= expenses($connect, $id, $donation, $month, $year);
 					
+					
+					
 					$_SESSION['expenses_sum'] = $_SESSION['food'] + $_SESSION['house'] + $_SESSION['transport'] + $_SESSION['telecomunication'] + $_SESSION['healthcare'] + $_SESSION['cloth'] + $_SESSION['hygiene'] + $_SESSION['kids'] + $_SESSION['entertainment'] + $_SESSION['trips'] + $_SESSION['trainings'] + $_SESSION['books'] + $_SESSION['savings'] + $_SESSION['pension'] + $_SESSION['repaymen'] + $_SESSION['donation'];
 					
 					//pie chart
 					
 					$_SESSION['dataPoints'] = array( 
-							array("label"=>"Food", "y"=>$_SESSION['food'] / 100 * 3.6),
-							array("label"=>"House", "y"=>$_SESSION['house'] / 100 * 3.6),
-							array("label"=>"Transport", "y"=>$_SESSION['transport'] / 100 * 3.6),
-							array("label"=>"Telecomunication", "y"=>$_SESSION['telecomunication'] / 100 * 3.6),
-							array("label"=>"Healthcare", "y"=>$_SESSION['healthcare'] / 100 * 3.6),
-							array("label"=>"Cloth", "y"=>$_SESSION['cloth'] / 100 * 3.6),
-							array("label"=>"Hygiene", "y"=>$_SESSION['hygiene'] / 100 * 3.6),
-							array("label"=>"Kids", "y"=>$_SESSION['kids'] / 100 * 3.6),
-							array("label"=>"Entertainment", "y"=>$_SESSION['entertainment'] / 100 * 3.6),
-							array("label"=>"Trips", "y"=>$_SESSION['trips'] / 100 * 3.6),
-							array("label"=>"Trainings", "y"=>$_SESSION['trainings'] / 100 * 3.6),
-							array("label"=>"Books", "y"=>$_SESSION['books'] / 100 * 3.6),
-							array("label"=>"Savings", "y"=>$_SESSION['savings'] / 100 * 3.6),
-							array("label"=>"Pension", "y"=>$_SESSION['pension'] / 100 * 3.6),
-							array("label"=>"Repaymen", "y"=>$_SESSION['repaymen'] / 100 * 3.6),
-							array("label"=>"Donation", "y"=>$_SESSION['donation'] / 100 * 3.6)
+							array("label"=>"Food", "y"=>$_SESSION['food'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"House", "y"=>$_SESSION['house'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Transport", "y"=>$_SESSION['transport'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Telecomunication", "y"=>$_SESSION['telecomunication'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Healthcare", "y"=>$_SESSION['healthcare'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Cloth", "y"=>$_SESSION['cloth'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Hygiene", "y"=>$_SESSION['hygiene'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Kids", "y"=>$_SESSION['kids'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Entertainment", "y"=>$_SESSION['entertainment'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Trips", "y"=>$_SESSION['trips'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Trainings", "y"=>$_SESSION['trainings'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Books", "y"=>$_SESSION['books'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Savings", "y"=>$_SESSION['savings'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Pension", "y"=>$_SESSION['pension'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Repaymen", "y"=>$_SESSION['repaymen'] * 100 / $_SESSION['expenses_sum']),
+							array("label"=>"Donation", "y"=>$_SESSION['donation'] * 100 / $_SESSION['expenses_sum'])
 					);
 					
 					
@@ -96,7 +99,7 @@
 
 function incomes ($connect, $id , $value, $month, $year) {
 	
-	$result = $connect->query("SELECT SUM(amount) FROM incomes AS inc INNER JOIN incomes_category_assigned_to_user AS ic ON inc.income_category_assigned_to_user_id = ic.id AND ic.name = '$value' AND inc.user_id = ic.user_id AND MONTH(date_of_income) = '$month' AND YEAR(date_of_income) = '$year'");
+	$result = $connect->query("SELECT SUM(amount) FROM incomes AS inc INNER JOIN incomes_category_assigned_to_user AS ic ON inc.income_category_assigned_to_user_id = ic.id AND ic.name = '$value' AND inc.user_id = ic.user_id AND MONTH(date_of_income) = '$month' AND YEAR(date_of_income) = '$year' AND inc.user_id = '$id'");
 			
 		
 	
@@ -108,7 +111,7 @@ function incomes ($connect, $id , $value, $month, $year) {
 }
 function expenses ($connect, $id , $value,$month, $year) {
 	
-	$result = $connect->query("SELECT SUM(amount) FROM expenses AS exp INNER JOIN expenses_category_assigned_to_user AS ec ON exp.expenses_category_assigned_to_user_id = ec.id AND ec.name = '$value' AND exp.user_id = ec.user_id AND MONTH(date_of_expense) = '$month' AND YEAR(date_of_expense) = '$year'");
+	$result = $connect->query("SELECT SUM(amount) FROM expenses AS exp INNER JOIN expenses_category_assigned_to_user AS ec ON exp.expenses_category_assigned_to_user_id = ec.id AND ec.name = '$value' AND exp.user_id = ec.user_id AND MONTH(date_of_expense) = '$month' AND YEAR(date_of_expense) = '$year' AND exp.user_id = '$id'");
 			
 
 	$row = $result->fetch_assoc();

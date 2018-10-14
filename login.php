@@ -2,7 +2,6 @@
 	
 	session_start();
 	
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +28,7 @@
 					<div class="col" id="logo">
 						<a href ="index.php" id="logoLink">House<i class = "icon-money"></i><span style="color: #CC0000">Budget </span></a>
 					</div>
-					<div class="col" id="clock"></div>
+					<div class="col" id="clock"><?php date_default_timezone_set('Europe/Warsaw'); echo $clock = date('Y/m/d H:i:s'); ?></div>
 			</div>		
 		</div>
 	</header>

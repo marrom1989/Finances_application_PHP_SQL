@@ -17,10 +17,13 @@ function timer()
 				var second = today.getSeconds();
 				if(second < 10) second = "0" + second;
 				
-		$('#clock').html(day+"/"+month+"/"+year+" | "+hour+":"+minute+":"+second);
+		$('#clock').html(year+"/"+month+"/"+day+" | "+hour+":"+minute+":"+second);
 }
 function SetInternetTimer(){
 setInterval("timer()",1000);
 }
 
-window.onload = SetInternetTimer;
+$(window).on('load', SetInternetTimer());
+
+
+
